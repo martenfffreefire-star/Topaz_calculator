@@ -1,20 +1,45 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" href="styles/style.css"/>
-  <title>Hello, World!</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Topaz Landscape</title>
+<style>
+html,body{margin:0;background:#fff;font-family:Tahoma,Arial,sans-serif;font-weight:700}
+body{display:flex;justify-content:center;align-items:flex-start}
+#sheet{width:98vw;max-width:1400px;padding:8px;box-sizing:border-box}
+#dt{text-align:center;font-size:32px;margin:8px 0 16px}
+.wrap{display:flex;gap:20px}
+table{width:50%;border-collapse:collapse;table-layout:fixed}
+th,td{border:2px solid #000;text-align:center;padding:8px;font-size:22px;background:#fff}
+.title{font-size:34px}
+</style>
 </head>
 <body>
-  <h1>
-    Hello, World!
-  </h1>
-  <style>
-    h1 {color : blue}
-      </style>
-  <script>
-  console.log("hello")
-  </script>
-</body>
-</html>
+<div id="sheet">
+<div id="dt"></div>
+<div class="wrap">
+<table><tr><th class="title" colspan="3">أسعار الذهب</th></tr>
+<tr><th>العيار</th><th>شراء من العميل</th><th>بيع للعميل</th></tr><tbody id="g"></tbody></table>
+<table><tr><th class="title" colspan="3">أسعار الفضة</th></tr>
+<tr><th>العيار</th><th>شراء من العميل</th><th>بيع للعميل</th></tr><tbody id="s"></tbody></table>
+</div>
+</div>
+<script>
+dt.textContent=new Date().toLocaleDateString('en-US')+" - "+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+let gb=+prompt("شراء من العميل 21");
+let gs=+prompt("بيع للعميل 21");
+let sb=+prompt("شراء من العميل 999");
+let ss=+prompt("بيع للعميل 999");
+let go=prompt("أوقية الذهب");
+let so=prompt("أوقية الفضة");
+[[24,"999.9"],[22,"916.7"],[21,"875"],[18,"750"],[14,"585"],[12,"500"],[10,"416.7"],[9,"375"],[6,"250"]].forEach(x=>{
+g.innerHTML+=`<tr><td>${x[0]} (${x[1]})</td><td>${(gb*x[0]/21).toFixed(2)}</td><td>${(gs*x[0]/21).toFixed(2)}</td></tr>`;
+});
+g.innerHTML+=`<tr><td>أوقية الذهب</td><td colspan=2>${go} $</td></tr>`;
+[[999],[925],[900],[800],[600]].forEach(x=>{
+s.innerHTML+=`<tr><td>${x[0]}</td><td>${(sb*x[0]/999).toFixed(2)}</td><td>${(ss*x[0]/999).toFixed(2)}</td></tr>`;
+});
+s.innerHTML+=`<tr><td>أوقية الفضة</td><td colspan=2>${so} $</td></tr>`;
+</script>
+</body></html>
